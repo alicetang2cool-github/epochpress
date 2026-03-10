@@ -38,8 +38,8 @@ const fallbackFooter: FooterSection = {
   services: productLinks.map((item) => ({ text: item.name, url: item.href })),
   quickLinks: companyLinks.map((item) => ({ text: item.name, url: item.href })),
   legalLinks: [
-    { text: 'Privacy Policy', url: '/privacy' },
-    { text: 'Terms of Service', url: '/terms' },
+    { text: 'Privacy Policy', url: '/privacy-policy' },
+    { text: 'Terms of Service', url: '/terms-of-service' },
   ],
   copyright: '© {year} Epoch Press. All rights reserved.',
 };
@@ -75,8 +75,8 @@ export function Footer({
   const legalLinks = footer.legalLinks?.length
     ? footer.legalLinks.map((item) => ({ name: item.text, href: item.url }))
     : [
-        { name: 'Privacy Policy', href: '/privacy' },
-        { name: 'Terms of Service', href: '/terms' },
+        { name: 'Privacy Policy', href: '/privacy-policy' },
+        { name: 'Terms of Service', href: '/terms-of-service' },
       ];
   const copyright = (footer.copyright || fallbackFooter.copyright).replace(
     '{year}',
