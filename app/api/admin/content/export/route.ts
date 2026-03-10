@@ -155,7 +155,7 @@ export async function POST(request: NextRequest) {
   const landingEntries = entries.filter((entry) => LANDING_PATHS.includes(entry.path as (typeof LANDING_PATHS)[number]));
   await Promise.all(
     landingEntries.map(async (entry) => {
-      const targetPath = path.join(process.cwd(), 'data', entry.path.replace(/^landing\//, ''));
+      const targetPath = path.join(process.cwd(), 'data', entry.path);
       await fs.mkdir(path.dirname(targetPath), { recursive: true });
       await fs.writeFile(targetPath, JSON.stringify(entry.data, null, 2));
     })

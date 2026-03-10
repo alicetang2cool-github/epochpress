@@ -6,6 +6,8 @@ import zhData from '@/data/landing/zh.json';
 import heData from '@/data/landing/he.json';
 import productsData from '@/data/products.json';
 import { AutoScrollGallery } from '@/components/landing/AutoScrollGallery';
+import { getRequestSiteId } from '@/lib/content';
+import { canUseContentDb, fetchContentEntry } from '@/lib/contentDb';
 
 const caseStudyTone: Record<string, string> = {
   Newspapers: 'bg-blue-100 text-blue-800',
@@ -22,6 +24,9 @@ const LANDINGS: Record<string, LandingData> = {
   zh: zhData,
   he: heData,
 };
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 const CONTACT_COPY: Record<
   string,
   {
@@ -115,9 +120,26 @@ export function generateStaticParams() {
   return [{ lang: 'es' }, { lang: 'zh' }, { lang: 'he' }];
 }
 
-export default function LandingPage({ params }: { params: { lang: string } }) {
+async function loadLandingData(lang: string): Promise<LandingData | null> {
+  const fallback = LANDINGS[lang];
+  if (!fallback) return null;
+  if (!canUseContentDb()) return fallback;
+
+  const siteId = await getRequestSiteId();
+  const path = `landing/${lang}.json`;
+  const localePriority = Array.from(new Set([lang, 'en', 'zh', 'he', 'es']));
+  for (const locale of localePriority) {
+    const entry = await fetchContentEntry(siteId, locale, path);
+    if (entry?.data && typeof entry.data === 'object') {
+      return entry.data as LandingData;
+    }
+  }
+  return fallback;
+}
+
+export default async function LandingPage({ params }: { params: { lang: string } }) {
   if (params.lang === 'en') redirect('/');
-  const data = LANDINGS[params.lang];
+  const data = await loadLandingData(params.lang);
   if (!data) notFound();
   const contactCopy = CONTACT_COPY[params.lang] || CONTACT_COPY.es;
   const contactData = (data as Record<string, any>).contact || {};
@@ -153,20 +175,23 @@ export default function LandingPage({ params }: { params: { lang: string } }) {
   const heroVariant = String((data.hero as Record<string, unknown>)?.variant || 'split-photo-right');
   const heroCentered = heroVariant === 'centered';
   const heroImageRight = heroVariant !== 'split-photo-left';
-  const landingImageBySlug = new Map(
-    data.productGallery.items.map((item) => [item.href.split('/').pop() || '', item.image])
+  const productCatalogBySlug = new Map(
+    (productsData.categories || []).map((item) => [item.slug, item] as const)
   );
-  const productItems = (productsData.categories || []).map((source) => {
-    const slug = source.slug;
+  const productItems = data.productGallery.items.map((item) => {
+    const slug = (item.href || '').split('/').pop() || '';
+    const source = productCatalogBySlug.get(slug);
     const detailLines =
-      Array.isArray(source.highlights) && source.highlights.length > 0
-        ? source.highlights.map((point) => `- ${point}`)
-        : ['- High quality output', '- Flexible quantities', '- Reliable turnaround'];
+      Array.isArray(item.highlights) && item.highlights.length > 0
+        ? item.highlights.map((point) => `- ${point}`)
+        : Array.isArray(source?.highlights) && source.highlights.length > 0
+          ? source.highlights.map((point) => `- ${point}`)
+          : ['- High quality output', '- Flexible quantities', '- Reliable turnaround'];
     return {
-      name: source.name,
-      descParagraphs: [source.desc, ...detailLines],
-      href: `/products/${slug}`,
-      image: landingImageBySlug.get(slug) || '',
+      name: item.name || source?.name || slug,
+      descParagraphs: [item.desc || source?.desc || '', ...detailLines],
+      href: item.href || `/products/${slug}`,
+      image: item.image || '',
     };
   });
 

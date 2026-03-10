@@ -115,67 +115,67 @@
   "caseStudies": {
     "items": [
       {
-        "quote": "Epoch Press gave us operational confidence when timing mattered most.",
-        "title": "Regional Daily Turnaround Stabilized",
-        "author": "Operations Director",
-        "client": "Northeast Media Group",
-        "result": "On-time release rate improved from 86% to 98% in one quarter.",
-        "category": "Newspapers",
+        "quote": "在最看重时效的时候，Epoch Press 让我们重新建立了运营信心。",
+        "title": "区域日报交付节奏稳定提升",
+        "author": "运营总监",
+        "client": "东北媒体集团",
+        "result": "一个季度内，准时发行率从 86% 提升至 98%。",
+        "category": "报纸",
         "featured": true,
-        "solution": "Epoch Press implemented a tighter prepress validation workflow, revised cutoff protocol, and dedicated rush lane.",
-        "challenge": "Late-night editorial changes repeatedly threatened print deadlines and carrier windows."
+        "solution": "Epoch Press 建立更严格的印前校验流程，优化截稿机制，并配置专用加急通道。",
+        "challenge": "深夜编辑改稿频繁发生，持续冲击印刷截稿与投递窗口。"
       },
       {
-        "quote": "The consistency is obvious issue to issue. It elevated our brand instantly.",
-        "title": "Premium Color Consistency Across Issues",
-        "author": "Publisher",
-        "client": "Avenue Living Magazine",
-        "result": "Brand color variance dropped significantly and ad client satisfaction scores increased.",
-        "category": "Magazines",
+        "quote": "每一期的色彩一致性都非常明显，品牌质感立刻提升。",
+        "title": "跨期刊色彩一致性全面提升",
+        "author": "出版人",
+        "client": "Avenue Living 杂志",
+        "result": "品牌色差显著下降，广告客户满意度同步提升。",
+        "category": "杂志",
         "featured": true,
-        "solution": "G7-calibrated color controls and tighter proofing checkpoints across covers and interior signatures.",
-        "challenge": "Inconsistent brand tones across monthly issues reduced visual continuity for advertisers."
+        "solution": "采用 G7 色彩校准与更严格的打样检查点，覆盖封面与内文关键页。",
+        "challenge": "月刊各期品牌色不稳定，影响广告版面的视觉连续性。"
       },
       {
-        "quote": "We moved faster with less risk and better unit economics.",
-        "title": "Short-Run Book Program Scaled Profitably",
-        "author": "Head of Production",
-        "client": "Independent Education Publisher",
-        "result": "Inventory waste reduced by 32% while maintaining launch schedules.",
-        "category": "Books",
-        "solution": "Epoch Press structured a hybrid short-run program with staged quantities and repeatable finishing specs.",
-        "challenge": "Frequent content revisions made large runs risky and costly."
+        "quote": "我们以更低风险实现了更快推进，单本经济性也更好。",
+        "title": "短版图书项目实现可盈利扩容",
+        "author": "生产负责人",
+        "client": "独立教育出版社",
+        "result": "在保证发行节奏的前提下，库存浪费降低 32%。",
+        "category": "图书",
+        "solution": "Epoch Press 设计分阶段数量与标准化后道参数的混合短版方案。",
+        "challenge": "内容频繁修订使大批量印刷的风险和成本持续上升。"
       },
       {
-        "quote": "Fast execution without sacrificing quality. Exactly what we needed.",
-        "title": "Luxury Brand Campaign Delivered in 10 Days",
-        "author": "Brand Marketing Lead",
-        "client": "National Retail Brand",
-        "result": "Campaign launched on schedule across all target markets.",
-        "category": "Marketing Print",
+        "quote": "执行速度很快且质量不打折，完全符合我们的目标。",
+        "title": "高端品牌活动 10 天完成交付",
+        "author": "品牌营销负责人",
+        "client": "全国零售品牌",
+        "result": "活动按计划在全部目标市场同步上线。",
+        "category": "营销物料",
         "featured": true,
-        "solution": "Parallel production planning across brochures, inserts, and point-of-sale assets with coordinated QC.",
-        "challenge": "A multi-format launch needed premium print quality under an aggressive timeline."
+        "solution": "对手册、夹页与门店物料进行并行排产，并统一质检节奏。",
+        "challenge": "多品类同步上线且时间紧迫，同时必须保证高端印刷品质。"
       },
       {
-        "quote": "The process discipline made forecasting much easier for our team.",
-        "title": "Acquisition Mailer Improved Response Efficiency",
-        "author": "Campaign Manager",
-        "client": "Healthcare Network",
-        "result": "Delivery consistency improved and campaign response efficiency increased.",
-        "category": "Direct Mail",
-        "solution": "Epoch Press aligned print, personalization, and drop-date sequencing with USPS-ready workflows.",
-        "challenge": "Prior vendors produced variable quality and mailing delays across waves."
+        "quote": "流程标准化后，我们团队的投放预测变得更轻松、更准确。",
+        "title": "获客直邮项目显著提升响应效率",
+        "author": "活动经理",
+        "client": "医疗服务网络",
+        "result": "投递稳定性提升，活动响应效率同步增长。",
+        "category": "直邮",
+        "solution": "Epoch Press 将印刷、个性化与投递节奏打通，并按 USPS 就绪流程执行。",
+        "challenge": "以往供应商在多批次投递中存在质量波动与到达延迟。"
       },
       {
-        "quote": "Epoch Press turned a fragmented print operation into a reliable system.",
-        "title": "Franchise Print Standardization at Scale",
-        "author": "Procurement Director",
-        "client": "Hospitality Franchise Group",
-        "result": "Visual consistency improved across 40+ locations within one rollout cycle.",
-        "category": "Multi-Location Rollout",
-        "solution": "Standardized templates, controlled production specs, and synchronized fulfillment by location.",
-        "challenge": "Store-level print quality varied by market, weakening brand presentation."
+        "quote": "Epoch Press 把分散的印刷执行变成了一套可复制、可依赖的系统。",
+        "title": "连锁品牌多门店印刷标准化落地",
+        "author": "采购总监",
+        "client": "酒店餐饮连锁集团",
+        "result": "一个部署周期内，40+ 门店的视觉一致性显著提升。",
+        "category": "多门店部署",
+        "solution": "统一模板、生产参数与分店履约节奏，实现按门店同步交付。",
+        "challenge": "各地区门店印刷质量不一，持续削弱品牌呈现。"
       }
     ],
     "title": "案例结果"
@@ -233,91 +233,91 @@
   "productGallery": {
     "items": [
       {
-        "desc": "Web offset printing for daily, weekly, and community newspapers. Broadsheet and tabloid formats, black-and-white or full color, from 500 to 500,000+ copies.",
+        "desc": "面向日报、周报与社区报纸的轮转胶印方案，支持大报与小报版式，黑白或全彩，印量从 500 到 500,000+ 份。",
         "href": "/products/newspaper-printing",
-        "name": "Newspaper Printing",
+        "name": "报纸印刷",
         "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1400&q=80",
         "highlights": [
-          "Web offset & digital",
-          "500 to 500,000+ copies",
-          "3-5 day standard turnaround"
+          "轮转胶印与数字印刷",
+          "500 到 500,000+ 份印量",
+          "标准交期 3-5 天"
         ]
       },
       {
-        "desc": "Magazine and catalogue printing with saddle stitch or perfect binding, workbook-backed trim sizes, cover stocks, and finishing options for periodicals and premium publications.",
+        "desc": "杂志与画册印刷支持骑马钉与胶装，提供标准成品尺寸、封面纸张与后道工艺，适配期刊与高端刊物。",
         "href": "/products/magazine-printing",
-        "name": "Magazine Printing",
+        "name": "杂志印刷",
         "image": "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?auto=format&fit=crop&w=1400&q=80",
         "highlights": [
-          "Magazines + catalogues",
-          "Saddle stitch & perfect bind",
-          "Workbook-backed trim sizes"
+          "杂志与画册",
+          "骑马钉与胶装",
+          "标准化成品尺寸"
         ]
       },
       {
-        "desc": "Paper books and hardcover books with workbook-backed trim sizes, page ranges, cover materials, and finishing options for publishers, institutions, and branded editions.",
+        "desc": "平装与精装图书印刷，支持不同开本、页数、封面材质和后道工艺，适用于出版社、机构与品牌定制版。",
         "href": "/products/book-printing",
-        "name": "Book Printing",
+        "name": "图书印刷",
         "image": "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=1400&q=80",
         "highlights": [
-          "Paper books + hardcover books",
-          "Notebooks + albums",
-          "Workbook-backed stock options"
+          "平装与精装",
+          "笔记本与画册",
+          "纸张与工艺可选"
         ]
       },
       {
-        "desc": "Desk calendars and wall calendars with workbook-backed cover, finishing, and interior page options for branded giveaways, offices, and retail seasonal programs.",
+        "desc": "桌历与挂历印刷，支持封面、内页与后道工艺组合，适用于品牌赠品、办公场景与零售季节性活动。",
         "href": "/products/calendar-printing",
-        "name": "Calendar Printing",
+        "name": "日历印刷",
         "image": "https://images.unsplash.com/photo-1506784693919-ef06d93c28d2?auto=format&fit=crop&w=1400&q=80",
         "highlights": [
-          "Desk + wall calendar formats",
-          "Wire-O binding and finishing options",
-          "Seasonal branded print programs"
+          "桌历与挂历规格",
+          "Wire-O 装订与后道工艺",
+          "季节性品牌项目支持"
         ]
       },
       {
-        "desc": "Flyers, brochures, posters, and postcards grouped into one campaign-print family, with workbook-backed sizes, fold styles, paper stocks, and finishing options.",
+        "desc": "将传单、折页、海报和明信片整合为同一营销物料体系，统一尺寸、折法、纸张与后道标准。",
         "href": "/products/marketing-print",
-        "name": "Marketing Print",
+        "name": "营销印刷",
         "image": "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1400&q=80",
         "highlights": [
-          "Flyers, brochures, posters, postcards",
-          "Shared fold and finish options",
-          "Fast campaign turnarounds"
+          "传单、折页、海报、明信片",
+          "统一折法与后道方案",
+          "活动项目快速交付"
         ]
       },
       {
-        "desc": "Workbook-backed menu printing for folded and unfolded restaurant menus, with defined page counts, paper stocks, color modes, and finishing options.",
+        "desc": "餐厅菜单印刷支持折页与单页版本，可配置页数、纸张、色彩模式与后道工艺，适配不同餐饮场景。",
         "href": "/products/menu-printing",
-        "name": "Menu Printing",
+        "name": "菜单印刷",
         "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80",
         "highlights": [
-          "Folded + unfolded menu formats",
-          "Defined page-count options",
-          "Workbook-backed finishing rules"
+          "折页与单页菜单",
+          "可配置页数方案",
+          "稳定可复用后道标准"
         ]
       },
       {
-        "desc": "From standard to ultra-premium. Foil stamping, embossing, spot UV, raised ink, and die-cutting available. Make a lasting first impression.",
+        "desc": "从标准到高端的名片印刷，支持烫金、压凹凸、局部 UV、立体油墨与模切，帮助品牌建立高质量第一印象。",
         "href": "/products/business-cards",
-        "name": "Business Cards",
+        "name": "名片印刷",
         "image": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1400&q=80",
         "highlights": [
-          "14pt, 16pt, 32pt stock",
-          "Foil, emboss, spot UV",
-          "From 250 cards"
+          "14pt、16pt、32pt 纸张",
+          "烫金、压凹凸、局部 UV",
+          "250 张起印"
         ]
       },
       {
-        "desc": "Banners, trade show displays, wall graphics, and outdoor signage. Vinyl, fabric, foam board, and acrylic. Indoor and outdoor options.",
+        "desc": "大幅面产品包括横幅、展会物料、墙面画面与户外标识，支持 PVC、布料、KT 板与亚克力等材质，适配室内外场景。",
         "href": "/products/large-format",
-        "name": "Large Format",
+        "name": "大幅面印刷",
         "image": "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1400&q=80",
         "highlights": [
-          "Custom sizes",
-          "Indoor & outdoor",
-          "Mounting & installation ready"
+          "尺寸可定制",
+          "室内外均可使用",
+          "支持安装与落地"
         ]
       }
     ],
