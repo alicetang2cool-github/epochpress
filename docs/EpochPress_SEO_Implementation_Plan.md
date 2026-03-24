@@ -199,17 +199,171 @@ After EN service pages are live and GSC data shows which services each language 
 
 ---
 
+## Phase 4 — Backlink Building (Ongoing from Week 4)
+
+> **Why this matters:** Backlinks are Google's #1 ranking factor. Without external links, even perfectly optimized pages won't reach page 1. One quality backlink from an industry site is worth more than 10 on-page optimizations.
+
+### 4.1 Low-Hanging Fruit (Week 4–6)
+
+| Action | Target | Expected Links | Effort |
+|--------|--------|---------------|--------|
+| **Business directories** | Yelp, BBB, Yellow Pages, Manta | 4–5 links | Low — submit and verify |
+| **Industry directories** | PrintingIndustry.com, PrintAccess, PrintingNews | 2–3 links | Low — submit listing |
+| **Local chambers** | Wayne Area Chamber, Middletown Chamber of Commerce | 2 links | Low — membership + listing |
+| **Client websites** | Ask top 10 clients to add "Printed by Epoch Press" with link | 3–5 links | Low — email request |
+| **Supplier directories** | Paper/ink suppliers often list their print partners | 1–2 links | Low — contact suppliers |
+
+### 4.2 Medium-Effort Link Building (Month 2–3)
+
+| Action | Target | Expected Links | Effort |
+|--------|--------|---------------|--------|
+| **Press releases** | New equipment, milestones, community involvement | 2–3 links per release | Medium — write + distribute |
+| **Guest posts** | Publishing industry blogs, local business blogs | 1–2 links/month | Medium — pitch + write |
+| **Case studies on client sites** | Co-publish case study: "How [Client] Improved Their Publication with Epoch Press" | 1 link per case study | Medium — collaborate |
+| **Local news** | Sponsor local event, get coverage in Wayne/Middletown newspapers | 1–2 links | Medium — outreach |
+| **Industry associations** | Printing Industries Alliance, PINE (Printing Industries of New England) | 1–2 links | Medium — membership |
+
+### 4.3 Link Building Targets
+
+| Month | New Links Target | Cumulative | Focus |
+|-------|-----------------|-----------|-------|
+| Month 1 | 8–10 | 8–10 | Directories + chambers + client asks |
+| Month 2 | 5–7 | 13–17 | Industry directories + first guest post |
+| Month 3 | 4–6 | 17–23 | Case studies + press release + associations |
+| Month 4+ | 3–5/month | 20–28+ | Ongoing guest posts + client links |
+
+> **Rule:** Quality over quantity. One link from PrintingIndustry.com is worth 50 links from random directories. Focus on relevance (printing industry + local NJ/NY sites).
+
+---
+
+## Phase 5 — Content Marketing / Blog SEO (Ongoing from Week 5)
+
+> **Why this matters:** Blog posts target long-tail keywords that service pages can't. They build topical authority, create internal link opportunities, and drive organic traffic that converts over time.
+
+### 5.1 Content Calendar — First 3 Months
+
+| Month | Post 1 | Post 2 | Target Keyword |
+|-------|--------|--------|---------------|
+| **Month 1** | "Offset vs Digital Printing: Which Is Right for Your Project?" | "How to Prepare Print-Ready Files (Complete Guide)" | `offset vs digital printing`, `print ready files` |
+| **Month 2** | "Newspaper Printing Costs: What Publishers Need to Know in 2026" | "5 Questions to Ask Before Choosing a Commercial Printer" | `newspaper printing cost`, `how to choose commercial printer` |
+| **Month 3** | "Magazine Binding Options: Saddle Stitch vs Perfect Bound" | "Rush Printing: How Fast Turnaround Actually Works" | `saddle stitch vs perfect bound`, `rush printing service` |
+
+### 5.2 Blog SEO Rules
+
+- Every post targets 1 primary long-tail keyword (check volume first)
+- Every post links to 1–2 service pages (internal link juice)
+- Every post has a CTA: "Need [service]? Request a Quote →"
+- Word count: 800–1,500 words (not fluff — real value)
+- Include images with descriptive alt text
+- Add FAQ schema to posts with Q&A content
+
+### 5.3 Multi-Language Blog Content
+
+| Language | Frequency | Topics |
+|----------|-----------|--------|
+| English | 2 posts/month | Full range — industry guides, cost breakdowns, process explanations |
+| Spanish | 1 post/month | Focus on: "Cómo preparar archivos para impresión", "Costos de impresión comercial" |
+| Chinese | 1 post/quarter | Focus on: community newspaper printing, Chinese-language typesetting tips |
+| Yiddish | 1 post/quarter | Focus on: community event printing, book printing for schools |
+
+---
+
+## Phase 6 — Review & Reputation System (Week 4 setup, ongoing)
+
+> **Why this matters:** For local pack (map results), Google weighs review count, average rating, and recency heavily. A business with 5 reviews loses to one with 50 reviews even with better on-page SEO.
+
+### 6.1 Review Collection System Setup
+
+| Step | Action | Timeline |
+|------|--------|----------|
+| 1 | Create Google review link shortcut (search "Google review link generator") | Day 1 |
+| 2 | Draft email template: "Thank you for choosing Epoch Press — would you share your experience?" | Day 1 |
+| 3 | Draft SMS template (shorter version) | Day 1 |
+| 4 | Set up automated email trigger: send review request 3 days after job delivery | Week 1 |
+| 5 | Add review link to email signatures, invoices, and delivery confirmations | Week 1 |
+| 6 | Print QR code card with Google review link — include in delivered packages | Week 2 |
+
+### 6.2 Review Targets
+
+| Timeline | Target Reviews | Expected Rating |
+|----------|---------------|----------------|
+| Current | ~5 reviews | Unknown |
+| Month 1 | 10+ reviews | 4.8+ |
+| Month 3 | 25+ reviews | 4.8+ |
+| Month 6 | 50+ reviews | 4.7+ |
+| Month 12 | 80+ reviews | 4.7+ |
+
+### 6.3 Review Response Protocol
+
+- **All reviews** get a response within 48 hours
+- **Positive reviews:** Thank by name, mention the specific service ("Glad the magazine printing turned out great!")
+- **Negative reviews:** Acknowledge, apologize, offer to resolve offline ("We'd love to make this right — please call us at 973.694.3600")
+- **Never:** Argue, get defensive, or offer incentives for review changes
+
+### 6.4 Multi-Platform Reviews
+
+| Platform | Priority | Action |
+|----------|----------|--------|
+| Google Business Profile | **#1** | Primary review target — affects local pack directly |
+| Yelp | #2 | Claim listing, respond to reviews, don't solicit (Yelp penalizes) |
+| BBB | #3 | Get accredited, encourage BBB reviews |
+| Industry-specific (PrintingIndustry.com) | #4 | If available, get listed + reviewed |
+| Facebook | #5 | Enable reviews on business page |
+
+---
+
+## Phase 7 — Technical SEO Fixes (Week 2, then quarterly)
+
+### 7.1 Immediate Fixes
+
+- [ ] **Core Web Vitals audit** — run PageSpeed Insights on all key pages
+- [ ] **Fix LCP (Largest Contentful Paint)** — optimize hero images, use Next.js `<Image>` with `priority`
+- [ ] **Fix CLS (Cumulative Layout Shift)** — set explicit width/height on images, avoid layout-shifting ads
+- [ ] **Mobile responsiveness** — test all pages at 375px width
+- [ ] **Crawl errors** — check GSC Coverage report, fix any 404s
+- [ ] **robots.txt** — ensure SEO pages are not blocked
+- [ ] **Sitemap** — verify all pages are included, submit to GSC
+- [ ] **HTTPS** — confirm all pages redirect HTTP → HTTPS
+- [ ] **Page speed** — target <3s load time on mobile for all money pages
+
+### 7.2 Quarterly Technical Audit
+
+- [ ] Re-run PageSpeed Insights on top 10 pages
+- [ ] Check GSC for new crawl errors
+- [ ] Verify sitemap is current
+- [ ] Check for broken internal links
+- [ ] Review Core Web Vitals trends
+- [ ] Test mobile rendering on new pages
+
+---
+
 ## SEO Score Targets
 
 | Date | Target Score | Key Milestone |
 |------|-------------|---------------|
-| Before (current) | ~40/102 | No SEO pages, no seo objects on LPs |
-| After Phase 0 | ~48/102 | seo objects on all existing pages + 4 LPs |
-| After Phase 1 | ~65/102 | Core landings + top 4 services live |
-| After Phase 1.5 | ~70/102 | All 4 LPs SEO-optimized + hreflang |
-| After Phase 2 | ~80/102 | All services + resources live |
-| After Phase 3 | ~90/102 | Near-location + language service pages + GBP |
-| 90-day target | ~94/102 | Full multi-language SEO system operational |
+| Before (current) | ~35/102 | No SEO pages, no seo objects on LPs, no review system |
+| After Phase 0 | ~45/102 | seo objects on all existing pages + 4 LPs |
+| After Phase 1 | ~58/102 | Core landings + top 4 services live |
+| After Phase 1.5 | ~62/102 | All 4 LPs SEO-optimized + hreflang |
+| After Phase 2 | ~70/102 | All services + resources live |
+| After Phase 3 | ~76/102 | Near-location + language service pages |
+| After Phase 4 (backlinks) | ~82/102 | 15+ quality backlinks acquired |
+| After Phase 5 (content) | ~86/102 | 6+ blog posts live, internal link network |
+| After Phase 6 (reviews) | ~92/102 | 25+ Google reviews, GBP optimized |
+| After Phase 7 (technical) | ~96/102 | Core Web Vitals green, no crawl errors |
+
+### What Drives the Score (Approximate Breakdown)
+
+| Category | Points | What Earns Them |
+|----------|--------|----------------|
+| Page architecture (service + condition + resource pages) | 22 | All SEO pages built + registered in DB |
+| On-page SEO (titles, meta, H1, schema, content) | 20 | Proper seo objects + word count + FAQ schema |
+| Technical SEO (speed, mobile, crawlability) | 20 | Core Web Vitals green + no errors |
+| Google Business Profile | 15 | Complete listing + services + photos + posts |
+| Reviews & reputation | 10 | 25+ reviews, 4.7+ rating, response protocol |
+| Citations & off-page (backlinks) | 10 | 15+ quality links from directories + industry |
+| Search Console & analytics | 5 | Verified, monitored monthly, keyword map refreshed |
+| **Total** | **102** | |
 
 ---
 
@@ -224,3 +378,34 @@ After EN service pages are live and GSC data shows which services each language 
 | B2B focus | Trust signals = client logos, equipment specs, case studies (not patient testimonials) |
 | National service | Service pages are NOT city-specific — they target national keywords |
 | Quote form | All CTAs point to `/quote` (not `/contact`) |
+
+---
+
+## Full Timeline Summary
+
+```
+Week 1    Phase 0 — Keyword validation, existing page audit, LP seo objects
+Week 2-3  Phase 1 — Build 2 core landings + 4 service pages
+Week 3    Phase 1.5 — Multi-language LP SEO + hreflang
+Week 4    Phase 6 setup — Review collection system live
+Week 4    Phase 4 start — Directory submissions, client link asks
+Week 4-5  Phase 2 — Build 4 more service pages + 2 resource pages
+Week 5    Phase 5 start — First 2 blog posts published
+Week 6+   Phase 3 — Near-location pages + language service pages
+Ongoing   Phase 4 — Link building (3-5 links/month)
+Ongoing   Phase 5 — Blog content (2 EN + 1 ES/month)
+Ongoing   Phase 6 — Review collection (target 25 by month 3)
+Quarterly Phase 7 — Technical SEO audit
+```
+
+### 90-Day Expected Outcomes
+
+| Metric | Before | After 90 Days |
+|--------|--------|--------------|
+| SEO pages | 0 | 16+ (EN + multi-language) |
+| Blog posts | 0 SEO-targeted | 6+ |
+| Google reviews | ~5 | 25+ |
+| Backlinks | Unknown | 15–20 quality links |
+| GSC impressions | Unknown | Track from Week 1 |
+| Organic traffic | Baseline | Expect 30-50% increase |
+| Quote requests from organic | Baseline | Track from Week 1 |
