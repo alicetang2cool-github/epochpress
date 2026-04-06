@@ -1,13 +1,13 @@
 import Link from 'next/link';
-import { ArrowRight, Phone, CheckCircle, ChevronRight, Newspaper, BookOpen, BookMarked, FileText, UtensilsCrossed, CreditCard, MonitorPlay } from 'lucide-react';
+import { ArrowRight, Phone, CheckCircle, ChevronRight } from 'lucide-react';
 import { loadAllItems, loadPageContent, getRequestSiteId } from '@/lib/content';
 import homeDataFallback from '@/data/home.json';
 import productsDataFallback from '@/data/products.json';
-import type { LucideIcon } from 'lucide-react';
 import Image from 'next/image';
 import fs from 'fs';
 import path from 'path';
 import { resolveRenderableImageUrl } from '@/lib/renderableImage';
+import { ScrollReveal } from '@/components/ui/ScrollReveal';
 
 type HomeData = typeof homeDataFallback;
 type BlogPreviewPost = {
@@ -47,16 +47,6 @@ interface ProductPageLike {
   pageHero?: ProductHeroLike;
   heroSection?: ProductHeroLike;
 }
-
-const categoryIcons: Record<string, { Icon: LucideIcon; color: string; bg: string }> = {
-  'newspaper-printing':  { Icon: Newspaper,       color: 'text-[var(--primary-dark)]', bg: 'bg-[var(--primary-50)]' },
-  'magazine-printing':   { Icon: BookOpen,        color: 'text-[var(--primary-dark)]', bg: 'bg-[var(--primary-50)]' },
-  'book-printing':       { Icon: BookMarked,      color: 'text-[var(--primary-dark)]', bg: 'bg-[var(--primary-50)]' },
-  'marketing-print':     { Icon: FileText,        color: 'text-[var(--primary-dark)]', bg: 'bg-[var(--primary-50)]' },
-  'menu-printing':       { Icon: UtensilsCrossed, color: 'text-[var(--primary-dark)]', bg: 'bg-[var(--primary-50)]' },
-  'business-cards':      { Icon: CreditCard,      color: 'text-[var(--primary-dark)]', bg: 'bg-[var(--primary-50)]' },
-  'large-format':        { Icon: MonitorPlay,     color: 'text-[var(--primary-dark)]', bg: 'bg-[var(--primary-50)]' },
-};
 
 const serviceImages: Record<string, string> = {
   'newspaper-printing': 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1400&q=80',
@@ -147,7 +137,6 @@ export default async function HomePage() {
     (hero as Record<string, unknown>)?.backgroundImage
   );
   const heroImage = resolveRenderableImageUrl((hero as Record<string, unknown>)?.image);
-  const hasHeroMedia = Boolean(heroBackgroundImage || heroImage);
   const featuredServiceSlug = servicesSection?.featuredSlug || categories?.[0]?.slug;
   const categoriesWithHeroImage = await Promise.all(
     categories.map(async (category) => {
@@ -224,53 +213,57 @@ export default async function HomePage() {
         )}
         <div className="container-content relative z-10 py-20">
           <div className={heroImage ? 'grid gap-8 lg:grid-cols-2 items-center' : 'max-w-3xl'}>
-            <div>
-              <span className="inline-block bg-white/10 border border-white/20 text-[var(--gold-light)] text-sm font-semibold px-4 py-2 rounded-full mb-8 backdrop-blur-sm">
-                {hero.badge}
-              </span>
-              <h1 className="font-serif text-white leading-[1.1] mb-8" style={{ fontSize: 'clamp(2.8rem, 5vw, 4.5rem)', fontWeight: 700 }}>
-                {hero.headline}
-              </h1>
-              <p className="text-on-primary-muted mb-10 leading-relaxed" style={{ fontSize: 'clamp(1.1rem, 1.5vw, 1.25rem)', maxWidth: '600px' }}>
-                {hero.subline}
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  href={hero.primaryCta.href}
-                  className="inline-flex items-center justify-center gap-2 bg-gold-gradient text-white font-semibold px-8 py-4 rounded-xl hover:opacity-90 transition-opacity shadow-gold text-base"
-                >
-                  {hero.primaryCta.text}
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-                <a
-                  href={hero.secondaryCta.href}
-                  className="inline-flex items-center justify-center gap-2 border-2 border-white/30 text-white font-semibold px-8 py-4 rounded-xl hover:border-white/60 hover:bg-white/5 transition-all text-base"
-                >
-                  <Phone className="w-5 h-5 text-[var(--gold-light)]" />
-                  {hero.secondaryCta.text}
-                </a>
-              </div>
+            <ScrollReveal distance={40} duration={860}>
+              <div>
+                <span className="inline-block bg-white/10 border border-white/20 text-[var(--gold-light)] text-sm font-semibold px-4 py-2 rounded-full mb-8 backdrop-blur-sm">
+                  {hero.badge}
+                </span>
+                <h1 className="font-serif text-white leading-[1.1] mb-8" style={{ fontSize: 'clamp(2.8rem, 5vw, 4.5rem)', fontWeight: 700 }}>
+                  {hero.headline}
+                </h1>
+                <p className="text-on-primary-muted mb-10 leading-relaxed" style={{ fontSize: 'clamp(1.1rem, 1.5vw, 1.25rem)', maxWidth: '600px' }}>
+                  {hero.subline}
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link
+                    href={hero.primaryCta.href}
+                    className="inline-flex items-center justify-center gap-2 bg-gold-gradient text-white font-semibold px-8 py-4 rounded-xl hover:opacity-90 transition-opacity shadow-gold text-base"
+                  >
+                    {hero.primaryCta.text}
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
+                  <a
+                    href={hero.secondaryCta.href}
+                    className="inline-flex items-center justify-center gap-2 border-2 border-white/30 text-white font-semibold px-8 py-4 rounded-xl hover:border-white/60 hover:bg-white/5 transition-all text-base"
+                  >
+                    <Phone className="w-5 h-5 text-[var(--gold-light)]" />
+                    {hero.secondaryCta.text}
+                  </a>
+                </div>
 
-              <div className="flex flex-wrap items-center gap-x-6 gap-y-3 mt-10">
-                {['Print-ready proofing', '48-hour rush options', 'Nationwide delivery'].map((item) => (
-                  <div key={item} className="flex items-center gap-2 text-sm text-on-primary-muted">
-                    <CheckCircle className="w-4 h-4 text-[var(--gold)] flex-shrink-0" />
-                    {item}
-                  </div>
-                ))}
+                <div className="flex flex-wrap items-center gap-x-6 gap-y-3 mt-10">
+                  {['Print-ready proofing', '48-hour rush options', 'Nationwide delivery'].map((item) => (
+                    <div key={item} className="flex items-center gap-2 text-sm text-on-primary-muted">
+                      <CheckCircle className="w-4 h-4 text-[var(--gold)] flex-shrink-0" />
+                      {item}
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
             {heroImage && (
-              <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-white/20">
-                <Image
-                  src={heroImage}
-                  alt={hero.headline}
-                  fill
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="h-full w-full object-cover"
-                />
-              </div>
+              <ScrollReveal distance={48} duration={980} delay={120}>
+                <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-white/20">
+                  <Image
+                    src={heroImage}
+                    alt={hero.headline}
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+              </ScrollReveal>
             )}
           </div>
         </div>
@@ -279,76 +272,79 @@ export default async function HomePage() {
       {/* Services: Featured Large Layout */}
       <section className="section-padding bg-[var(--surface)]">
         <div className="container-content">
-          <div className="text-center mb-12">
-            <span className="inline-block bg-[var(--gold-50)] text-[var(--gold)] text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-4">
-              {servicesSection?.badge || 'Core Capabilities'}
-            </span>
-            <h2 className="font-serif text-[var(--navy)] mb-4" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)' }}>
-              {servicesSection?.title || 'Our Printing Services'}
-            </h2>
-            <p className="text-[var(--text-secondary)] max-w-xl mx-auto">
-              {servicesSection?.subtitle || 'From daily newspapers to luxury business cards, we handle every print project with precision and care.'}
-            </p>
-          </div>
+          <ScrollReveal distance={36} duration={820}>
+            <div className="text-center mb-12">
+              <span className="inline-block bg-[var(--gold-50)] text-[var(--gold)] text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-4">
+                {servicesSection?.badge || 'Core Capabilities'}
+              </span>
+              <h2 className="font-serif text-[var(--navy)] mb-4" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)' }}>
+                {servicesSection?.title || 'Our Printing Services'}
+              </h2>
+              <p className="text-[var(--text-secondary)] max-w-xl mx-auto">
+                {servicesSection?.subtitle || 'From daily newspapers to luxury business cards, we handle every print project with precision and care.'}
+              </p>
+            </div>
+          </ScrollReveal>
 
           {homeProductsVariant === 'detail-alternating' ? (
             <div className="space-y-6">
               {categories.map((cat, index) => (
-                <article
-                  key={cat.slug}
-                  className="grid grid-cols-1 overflow-hidden rounded-2xl border border-[var(--border)] bg-white shadow-card md:grid-cols-2"
-                >
-                  <div className={index % 2 === 1 ? 'md:order-2' : ''}>
-                    <img
-                      src={serviceImages[cat.slug] || serviceImages['marketing-print']}
-                      alt={cat.name}
-                      className="h-full min-h-64 w-full object-cover"
-                    />
-                  </div>
-                  <div className="flex flex-col justify-center p-8">
-                    <h3 className="font-serif text-[var(--navy)] mb-3" style={{ fontSize: 'clamp(1.3rem, 2.1vw, 1.8rem)' }}>
-                      {cat.name}
-                    </h3>
-                    <p className="text-[var(--text-secondary)] mb-6 leading-relaxed">{cat.desc}</p>
-                    <Link
-                      href={`/products/${cat.slug}`}
-                      className="inline-flex w-fit items-center gap-2 rounded-xl bg-gold-gradient px-4 py-2 text-sm font-semibold text-white shadow-gold hover:opacity-90"
-                    >
-                      Learn More <ChevronRight className="w-4 h-4" />
-                    </Link>
-                  </div>
-                </article>
+                <ScrollReveal key={cat.slug} delay={index * 120}>
+                  <article className="grid grid-cols-1 overflow-hidden rounded-2xl border border-[var(--border)] bg-white shadow-card md:grid-cols-2">
+                    <div className={index % 2 === 1 ? 'md:order-2' : ''}>
+                      <img
+                        src={serviceImages[cat.slug] || serviceImages['marketing-print']}
+                        alt={cat.name}
+                        className="h-full min-h-64 w-full object-cover"
+                      />
+                    </div>
+                    <div className="flex flex-col justify-center p-8">
+                      <h3 className="font-serif text-[var(--navy)] mb-3" style={{ fontSize: 'clamp(1.3rem, 2.1vw, 1.8rem)' }}>
+                        {cat.name}
+                      </h3>
+                      <p className="text-[var(--text-secondary)] mb-6 leading-relaxed">{cat.desc}</p>
+                      <Link
+                        href={`/products/${cat.slug}`}
+                        className="inline-flex w-fit items-center gap-2 rounded-xl bg-gold-gradient px-4 py-2 text-sm font-semibold text-white shadow-gold hover:opacity-90"
+                      >
+                        Learn More <ChevronRight className="w-4 h-4" />
+                      </Link>
+                    </div>
+                  </article>
+                </ScrollReveal>
               ))}
             </div>
           ) : (
             <>
               {featuredService && homeProductsVariant === 'featured-large' && (
-                <div className="grid grid-cols-1 lg:grid-cols-5 rounded-2xl overflow-hidden bg-white border border-[var(--border)] shadow-card mb-7">
-                  <div className="relative lg:col-span-3 aspect-video">
-                    <Image
-                      src={serviceImages[featuredService.slug] || serviceImages['marketing-print']}
-                      alt={featuredService.name}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 1024px) 100vw, 60vw"
-                    />
+                <ScrollReveal distance={48} duration={920}>
+                  <div className="grid grid-cols-1 lg:grid-cols-5 rounded-2xl overflow-hidden bg-white border border-[var(--border)] shadow-card mb-7">
+                    <div className="relative lg:col-span-3 aspect-video">
+                      <Image
+                        src={serviceImages[featuredService.slug] || serviceImages['marketing-print']}
+                        alt={featuredService.name}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 1024px) 100vw, 60vw"
+                      />
+                    </div>
+                    <div className="lg:col-span-2 p-8 flex flex-col justify-center">
+                      <span className="inline-block w-fit bg-[var(--gold-50)] text-[var(--gold)] text-xs font-semibold px-2.5 py-1 rounded-full mb-3">
+                        Featured Service
+                      </span>
+                      <h3 className="font-serif text-[var(--navy)] mb-3" style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2rem)' }}>
+                        {featuredService.name}
+                      </h3>
+                      <p className="text-[var(--text-secondary)] mb-6 leading-relaxed">{featuredService.desc}</p>
+                      <Link
+                        href={`/products/${featuredService.slug}`}
+                        className="inline-flex w-fit items-center gap-2 text-sm font-semibold text-[var(--gold)] hover:text-[var(--gold-light)] transition-colors"
+                      >
+                        Learn More <ChevronRight className="w-4 h-4" />
+                      </Link>
+                    </div>
                   </div>
-                  <div className="lg:col-span-2 p-8 flex flex-col justify-center">
-                    <span className="inline-block w-fit bg-[var(--gold-50)] text-[var(--gold)] text-xs font-semibold px-2.5 py-1 rounded-full mb-3">
-                      Featured Service
-                    </span>
-                    <h3 className="font-serif text-[var(--navy)] mb-3" style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2rem)' }}>
-                      {featuredService.name}
-                    </h3>
-                    <p className="text-[var(--text-secondary)] mb-6 leading-relaxed">{featuredService.desc}</p>
-                    <Link
-                      href={`/products/${featuredService.slug}`}
-                      className="inline-flex w-fit items-center gap-2 text-sm font-semibold text-[var(--gold)] hover:text-[var(--gold-light)] transition-colors"
-                    >
-                      Learn More <ChevronRight className="w-4 h-4" />
-                    </Link>
-                  </div>
-                </div>
+                </ScrollReveal>
               )}
 
               <div
@@ -360,55 +356,54 @@ export default async function HomePage() {
               >
                 {(homeProductsVariant === 'featured-large'
                   ? secondaryServices
-                  : categoriesWithHeroImage).map((cat) => {
-              const meta = categoryIcons[cat.slug];
-              const IconComponent = meta?.Icon;
-              const productDetails = productCatalogBySlug.get(cat.slug);
-              const highlights =
-                Array.isArray(productDetails?.highlights) && productDetails.highlights.length > 0
-                  ? productDetails.highlights.slice(0, 3)
-                  : [];
-              return (
-                <article
-                  key={cat.slug}
-                  className="group flex flex-col overflow-hidden rounded-2xl border border-[var(--border)] bg-white shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover"
-                >
-                  <div className="relative h-52 overflow-hidden bg-gradient-to-br from-[var(--navy)] to-[var(--charcoal)]">
-                    <img
-                      src={cat.heroImage || serviceImages[cat.slug] || serviceImages['marketing-print']}
-                      alt={cat.name}
-                      className="h-full w-full object-cover"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-                  </div>
-                  <div className="flex h-full flex-1 flex-col p-7">
-                    <h3 className="mb-3 text-lg font-semibold font-serif text-[var(--navy)] transition-colors group-hover:text-[var(--gold)]">
-                      {cat.name}
-                    </h3>
-                    <p className="mb-5 flex-1 text-sm leading-relaxed text-[var(--text-secondary)]">
-                      {cat.desc}
-                    </p>
-                    {homeProductsVariant === 'featured-large' && highlights.length > 0 && (
-                      <ul className="mb-6 space-y-2">
-                        {highlights.map((point) => (
-                          <li key={`${cat.slug}-${point}`} className="flex items-start gap-2 text-sm text-[var(--charcoal)]">
-                            <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-[var(--gold)]" />
-                            <span>{point}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                    <Link
-                      href={`/products/${cat.slug}`}
-                      className="inline-flex items-center justify-center gap-2 rounded-xl bg-gold-gradient px-5 py-3 text-sm font-semibold text-white shadow-gold transition-opacity hover:opacity-90"
-                    >
-                      Learn More
-                      <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                    </Link>
-                  </div>
-                </article>
-              );
+                  : categoriesWithHeroImage).map((cat, index) => {
+                    const productDetails = productCatalogBySlug.get(cat.slug);
+                    const highlights =
+                      Array.isArray(productDetails?.highlights) && productDetails.highlights.length > 0
+                        ? productDetails.highlights.slice(0, 3)
+                        : [];
+                    return (
+                      <ScrollReveal key={cat.slug} delay={index * 110}>
+                        <article
+                          className="group flex flex-col overflow-hidden rounded-2xl border border-[var(--border)] bg-white shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover"
+                        >
+                          <div className="relative h-52 overflow-hidden bg-gradient-to-br from-[var(--navy)] to-[var(--charcoal)]">
+                            <img
+                              src={cat.heroImage || serviceImages[cat.slug] || serviceImages['marketing-print']}
+                              alt={cat.name}
+                              className="h-full w-full object-cover"
+                              loading="lazy"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                          </div>
+                          <div className="flex h-full flex-1 flex-col p-7">
+                            <h3 className="mb-3 text-lg font-semibold font-serif text-[var(--navy)] transition-colors group-hover:text-[var(--gold)]">
+                              {cat.name}
+                            </h3>
+                            <p className="mb-5 flex-1 text-sm leading-relaxed text-[var(--text-secondary)]">
+                              {cat.desc}
+                            </p>
+                            {homeProductsVariant === 'featured-large' && highlights.length > 0 && (
+                              <ul className="mb-6 space-y-2">
+                                {highlights.map((point) => (
+                                  <li key={`${cat.slug}-${point}`} className="flex items-start gap-2 text-sm text-[var(--charcoal)]">
+                                    <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-[var(--gold)]" />
+                                    <span>{point}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
+                            <Link
+                              href={`/products/${cat.slug}`}
+                              className="inline-flex items-center justify-center gap-2 rounded-xl bg-gold-gradient px-5 py-3 text-sm font-semibold text-white shadow-gold transition-opacity hover:opacity-90"
+                            >
+                              Learn More
+                              <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                            </Link>
+                          </div>
+                        </article>
+                      </ScrollReveal>
+                    );
                 })}
               </div>
             </>
@@ -419,27 +414,28 @@ export default async function HomePage() {
       {/* Why Choose Us */}
       <section className="section-padding bg-white border-t border-[var(--border)]">
         <div className="container-content">
-          <div className="text-center mb-12">
-            <span className="inline-block bg-[var(--gold-50)] text-[var(--gold)] text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-4">
-              {whyChooseUs?.badge || 'Why Choose Us'}
-            </span>
-            <h2 className="font-serif text-[var(--navy)] mb-3" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)' }}>
-              {whyChooseUs?.title || 'Experience the Difference'}
-            </h2>
-            <p className="text-[var(--text-secondary)] max-w-2xl mx-auto">
-              {whyChooseUs?.subtitle || 'What sets us apart'}
-            </p>
-          </div>
+          <ScrollReveal distance={36} duration={820}>
+            <div className="text-center mb-12">
+              <span className="inline-block bg-[var(--gold-50)] text-[var(--gold)] text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-4">
+                {whyChooseUs?.badge || 'Why Choose Us'}
+              </span>
+              <h2 className="font-serif text-[var(--navy)] mb-3" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)' }}>
+                {whyChooseUs?.title || 'Experience the Difference'}
+              </h2>
+              <p className="text-[var(--text-secondary)] max-w-2xl mx-auto">
+                {whyChooseUs?.subtitle || 'What sets us apart'}
+              </p>
+            </div>
+          </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-            {(whyChooseUs?.points || []).map((point) => (
-              <div
-                key={point.title}
-                className="bg-[var(--surface)] rounded-2xl border border-[var(--border)] p-6 shadow-card"
-              >
-                <h3 className="font-serif text-[var(--navy)] text-xl mb-3">{point.title}</h3>
-                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{point.description}</p>
-              </div>
+            {(whyChooseUs?.points || []).map((point, index) => (
+              <ScrollReveal key={point.title} delay={index * 100}>
+                <div className="bg-[var(--surface)] rounded-2xl border border-[var(--border)] p-6 shadow-card">
+                  <h3 className="font-serif text-[var(--navy)] text-xl mb-3">{point.title}</h3>
+                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{point.description}</p>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -449,13 +445,15 @@ export default async function HomePage() {
       <section className="bg-[var(--navy)] py-14">
         <div className="container-content">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {stats.map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="font-serif font-bold text-[var(--gold-light)] mb-2" style={{ fontSize: 'clamp(2rem, 3vw, 2.75rem)' }}>
-                  {stat.value}
+            {stats.map((stat, index) => (
+              <ScrollReveal key={stat.label} delay={index * 90} distance={30} duration={760}>
+                <div className="text-center">
+                  <div className="font-serif font-bold text-[var(--gold-light)] mb-2" style={{ fontSize: 'clamp(2rem, 3vw, 2.75rem)' }}>
+                    {stat.value}
+                  </div>
+                  <div className="text-on-primary-muted text-sm font-medium">{stat.label}</div>
                 </div>
-                <div className="text-on-primary-muted text-sm font-medium">{stat.label}</div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -464,45 +462,51 @@ export default async function HomePage() {
       {/* Featured Portfolio */}
       <section className="section-padding bg-white">
         <div className="container-content">
-          <div className="flex items-end justify-between mb-10">
-            <div>
-              <h2 className="font-serif text-[var(--navy)] mb-3" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)' }}>
-                Featured Work
-              </h2>
-              <p className="text-[var(--text-secondary)]">A sample of projects we're proud to have delivered.</p>
+          <ScrollReveal distance={36} duration={820}>
+            <div className="flex items-end justify-between mb-10">
+              <div>
+                <h2 className="font-serif text-[var(--navy)] mb-3" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)' }}>
+                  Featured Work
+                </h2>
+                <p className="text-[var(--text-secondary)]">A sample of projects we're proud to have delivered.</p>
+              </div>
+              <Link href="/portfolio" className="hidden sm:flex items-center gap-1 text-sm font-semibold text-[var(--gold)] hover:text-[var(--gold-light)] transition-colors">
+                View All Work <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
-            <Link href="/portfolio" className="hidden sm:flex items-center gap-1 text-sm font-semibold text-[var(--gold)] hover:text-[var(--gold-light)] transition-colors">
-              View All Work <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
+          </ScrollReveal>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {displayedPortfolioItems.map((item, index) => (
-              <div key={index} className="group rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 border border-[var(--border)]">
-                <div className="relative h-48">
-                  <Image
-                    src={resolveRenderablePortfolioImage(item)}
-                    alt={item.title}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    className="block h-full w-full object-cover"
-                  />
+              <ScrollReveal key={`${item.title}-${index}`} delay={index * 110}>
+                <div className="group rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 border border-[var(--border)]">
+                  <div className="relative h-48">
+                    <Image
+                      src={resolveRenderablePortfolioImage(item)}
+                      alt={item.title}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      className="block h-full w-full object-cover"
+                    />
+                  </div>
+                  <div className="p-5">
+                    <span className="text-xs font-semibold text-[var(--gold)] uppercase tracking-wider">
+                      {item.category}
+                    </span>
+                    <h3 className="font-serif font-semibold text-[var(--navy)] text-base mt-1 mb-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-[var(--text-secondary)]">{item.desc}</p>
+                  </div>
                 </div>
-                <div className="p-5">
-                  <span className="text-xs font-semibold text-[var(--gold)] uppercase tracking-wider">
-                    {item.category}
-                  </span>
-                  <h3 className="font-serif font-semibold text-[var(--navy)] text-base mt-1 mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-[var(--text-secondary)]">{item.desc}</p>
-                </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
           <div className="mt-8 text-center sm:hidden">
-            <Link href="/portfolio" className="inline-flex items-center gap-1 text-sm font-semibold text-[var(--gold)]">
-              View All Work <ArrowRight className="w-4 h-4" />
-            </Link>
+            <ScrollReveal distance={28} duration={720}>
+              <Link href="/portfolio" className="inline-flex items-center gap-1 text-sm font-semibold text-[var(--gold)]">
+                View All Work <ArrowRight className="w-4 h-4" />
+              </Link>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -510,32 +514,36 @@ export default async function HomePage() {
       {/* Process */}
       <section className="section-padding bg-[var(--surface)]">
         <div className="container-content">
-          <div className="text-center mb-12">
-            <h2 className="font-serif text-[var(--navy)] mb-4" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)' }}>
-              How It Works
-            </h2>
-            <p className="text-[var(--text-secondary)] max-w-xl mx-auto">
-              From file submission to your door — a streamlined process built around your deadlines.
-            </p>
-          </div>
+          <ScrollReveal distance={36} duration={820}>
+            <div className="text-center mb-12">
+              <h2 className="font-serif text-[var(--navy)] mb-4" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)' }}>
+                How It Works
+              </h2>
+              <p className="text-[var(--text-secondary)] max-w-xl mx-auto">
+                From file submission to your door — a streamlined process built around your deadlines.
+              </p>
+            </div>
+          </ScrollReveal>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {process.map((step, index) => (
-              <div key={step.step} className="relative">
-                {index < process.length - 1 && (
-                  <div className="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-[var(--border)] z-0" />
-                )}
-                <div className="bg-white rounded-2xl p-6 shadow-card border border-[var(--border)] relative z-10 text-center">
-                  <div className="w-14 h-14 bg-navy-gradient rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="font-serif font-bold text-[var(--gold-light)] text-xl">{step.step}</span>
+              <ScrollReveal key={step.step} delay={index * 100}>
+                <div className="relative">
+                  {index < process.length - 1 && (
+                    <div className="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-[var(--border)] z-0" />
+                  )}
+                  <div className="bg-white rounded-2xl p-6 shadow-card border border-[var(--border)] relative z-10 text-center">
+                    <div className="w-14 h-14 bg-navy-gradient rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="font-serif font-bold text-[var(--gold-light)] text-xl">{step.step}</span>
+                    </div>
+                    <h3 className="font-serif font-semibold text-[var(--navy)] text-base mb-2">
+                      {step.title}
+                    </h3>
+                    <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                      {step.desc}
+                    </p>
                   </div>
-                  <h3 className="font-serif font-semibold text-[var(--navy)] text-base mb-2">
-                    {step.title}
-                  </h3>
-                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                    {step.desc}
-                  </p>
                 </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -544,83 +552,92 @@ export default async function HomePage() {
       {/* Latest from Blog */}
       <section className="section-padding bg-white border-t border-[var(--border)]">
         <div className="container-content">
-          <div className="text-center mb-12">
-            <span className="inline-block bg-[var(--gold-50)] text-[var(--gold)] text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-4">
-              {blogPreview?.badge || 'Insights'}
-            </span>
-            <h2 className="font-serif text-[var(--navy)] mb-3" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)' }}>
-              {blogPreview?.title || 'Latest from Our Blog & Media'}
-            </h2>
-            <p className="text-[var(--text-secondary)] max-w-2xl mx-auto">
-              {blogPreview?.subtitle || 'Educational resources and updates from our team.'}
-            </p>
-          </div>
+          <ScrollReveal distance={36} duration={820}>
+            <div className="text-center mb-12">
+              <span className="inline-block bg-[var(--gold-50)] text-[var(--gold)] text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-4">
+                {blogPreview?.badge || 'Insights'}
+              </span>
+              <h2 className="font-serif text-[var(--navy)] mb-3" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)' }}>
+                {blogPreview?.title || 'Latest from Our Blog & Media'}
+              </h2>
+              <p className="text-[var(--text-secondary)] max-w-2xl mx-auto">
+                {blogPreview?.subtitle || 'Educational resources and updates from our team.'}
+              </p>
+            </div>
+          </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {featuredBlogPosts.map((post) => (
-              <Link
-                key={post.slug}
-                href={`/blog/${post.slug}`}
-                className="group flex flex-col bg-white border border-[var(--border)] rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1"
-              >
-                <div className="relative aspect-video w-full overflow-hidden">
-                  <img
-                    src={resolveRenderableBlogImage(post)}
-                    alt={post.title}
-                    className="block h-full w-full object-cover"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="p-5">
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-[var(--gold-50)] text-[var(--gold)]">
-                      {toCategoryLabel(post.category)}
-                    </span>
-                    <span className="text-xs text-[var(--text-secondary)]">{post.readTime || 'Article'}</span>
+            {featuredBlogPosts.map((post, index) => (
+              <ScrollReveal key={post.slug} delay={index * 120}>
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="group flex flex-col bg-white border border-[var(--border)] rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1"
+                >
+                  <div className="relative aspect-video w-full overflow-hidden">
+                    <img
+                      src={resolveRenderableBlogImage(post)}
+                      alt={post.title}
+                      className="block h-full w-full object-cover"
+                      loading="lazy"
+                    />
                   </div>
-                  <h3 className="font-serif text-[var(--navy)] text-lg mb-2 leading-snug group-hover:text-[var(--gold)] transition-colors">
-                    {post.title}
-                  </h3>
-                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed line-clamp-3">{post.excerpt}</p>
-                </div>
-              </Link>
+                  <div className="p-5">
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-[var(--gold-50)] text-[var(--gold)]">
+                        {toCategoryLabel(post.category)}
+                      </span>
+                      <span className="text-xs text-[var(--text-secondary)]">{post.readTime || 'Article'}</span>
+                    </div>
+                    <h3 className="font-serif text-[var(--navy)] text-lg mb-2 leading-snug group-hover:text-[var(--gold)] transition-colors">
+                      {post.title}
+                    </h3>
+                    <p className="text-sm text-[var(--text-secondary)] leading-relaxed line-clamp-3">{post.excerpt}</p>
+                  </div>
+                </Link>
+              </ScrollReveal>
             ))}
           </div>
 
-          <div className="text-center mt-10">
-            <Link
-              href={blogPreview?.ctaHref || '/blog'}
-              className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--gold)] hover:text-[var(--gold-light)] transition-colors"
-            >
-              {blogPreview?.ctaText || 'Explore All Articles'} <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
+          <ScrollReveal distance={28} duration={720}>
+            <div className="text-center mt-10">
+              <Link
+                href={blogPreview?.ctaHref || '/blog'}
+                className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--gold)] hover:text-[var(--gold-light)] transition-colors"
+              >
+                {blogPreview?.ctaText || 'Explore All Articles'} <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* CTA Banner */}
       <section className="bg-navy-gradient py-20">
         <div className="container-content text-center">
-          <h2 className="font-serif text-white mb-5" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)' }}>
-            {cta.headline}
-          </h2>
-          <p className="text-on-primary-muted mb-10 mx-auto max-w-xl">{cta.subline}</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href={cta.primaryCta.href}
-              className="inline-flex items-center justify-center gap-2 bg-gold-gradient text-white font-semibold px-8 py-4 rounded-xl hover:opacity-90 transition-opacity shadow-gold"
-            >
-              {cta.primaryCta.text}
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-            <a
-              href={cta.secondaryCta.href}
-              className="inline-flex items-center justify-center gap-2 border-2 border-white/30 text-white font-semibold px-8 py-4 rounded-xl hover:border-white/60 transition-all"
-            >
-              <Phone className="w-5 h-5 text-[var(--gold-light)]" />
-              {cta.secondaryCta.text}
-            </a>
-          </div>
+          <ScrollReveal distance={40} duration={860}>
+            <>
+              <h2 className="font-serif text-white mb-5" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)' }}>
+                {cta.headline}
+              </h2>
+              <p className="text-on-primary-muted mb-10 mx-auto max-w-xl">{cta.subline}</p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  href={cta.primaryCta.href}
+                  className="inline-flex items-center justify-center gap-2 bg-gold-gradient text-white font-semibold px-8 py-4 rounded-xl hover:opacity-90 transition-opacity shadow-gold"
+                >
+                  {cta.primaryCta.text}
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+                <a
+                  href={cta.secondaryCta.href}
+                  className="inline-flex items-center justify-center gap-2 border-2 border-white/30 text-white font-semibold px-8 py-4 rounded-xl hover:border-white/60 transition-all"
+                >
+                  <Phone className="w-5 h-5 text-[var(--gold-light)]" />
+                  {cta.secondaryCta.text}
+                </a>
+              </div>
+            </>
+          </ScrollReveal>
         </div>
       </section>
     </>

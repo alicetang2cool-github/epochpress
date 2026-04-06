@@ -4,7 +4,10 @@ import { getRequestSiteId, loadPageContent } from '@/lib/content';
 import portfolioData from '@/data/portfolio.json';
 import fs from 'fs';
 import path from 'path';
-import { normalizeImageUrl, resolveRenderableImageUrl } from '@/lib/renderableImage';
+import {
+  normalizeImageUrl,
+  resolveRenderableImageUrl,
+} from '@/lib/renderableImage';
 
 type PortfolioData = typeof portfolioData & {
   hero?: {
@@ -63,11 +66,18 @@ const portfolioFallbackImages: Record<string, string> = {
     'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1400&q=80',
 };
 
-function resolveRenderableImage(item: { image?: string; category: string }): string | null {
+function resolveRenderableImage(item: {
+  image?: string;
+  category: string;
+}): string | null {
   const image = normalizeImageUrl(item.image);
   if (image && !image.startsWith('/uploads/')) return image;
   if (image && image.startsWith('/uploads/')) {
-    const localPath = path.join(process.cwd(), 'public', image.replace(/^\//, ''));
+    const localPath = path.join(
+      process.cwd(),
+      'public',
+      image.replace(/^\//, ''),
+    );
     if (fs.existsSync(localPath)) return image;
   }
   return portfolioFallbackImages[item.category] || null;
@@ -79,12 +89,19 @@ export default async function PortfolioPage({
   searchParams?: { category?: string };
 }) {
   const siteId = await getRequestSiteId();
-  const dbContent = await loadPageContent<PortfolioData>('portfolio', 'en', siteId);
+  const dbContent = await loadPageContent<PortfolioData>(
+    'portfolio',
+    'en',
+    siteId,
+  );
   const data = dbContent ?? (portfolioData as PortfolioData);
   const active = searchParams?.category || 'All';
   const { items, categories } = data;
-  const filtered = active === 'All' ? items : items.filter((i) => i.category === active);
-  const heroBackgroundImage = resolveRenderableImageUrl(data.hero?.backgroundImage);
+  const filtered =
+    active === 'All' ? items : items.filter((i) => i.category === active);
+  const heroBackgroundImage = resolveRenderableImageUrl(
+    data.hero?.backgroundImage,
+  );
   const heroImage = resolveRenderableImageUrl(data.hero?.image);
   const hasHeroMedia = Boolean(heroBackgroundImage || heroImage);
 
@@ -107,7 +124,13 @@ export default async function PortfolioPage({
           </>
         )}
         <div className="container-content relative z-10">
-          <div className={heroImage ? 'grid gap-8 lg:grid-cols-2 items-center' : 'text-center'}>
+          <div
+            className={
+              heroImage
+                ? 'grid gap-8 lg:grid-cols-2 items-center'
+                : 'text-center'
+            }
+          >
             <div className={heroImage ? '' : 'max-w-2xl mx-auto'}>
               <h1
                 className={`font-serif mb-4 ${hasHeroMedia ? 'text-white' : 'text-[var(--navy)]'}`}
@@ -117,7 +140,9 @@ export default async function PortfolioPage({
               </h1>
               <p
                 className={`max-w-2xl text-lg mx-auto ${
-                  hasHeroMedia ? 'text-on-primary-muted' : 'text-[var(--text-secondary)]'
+                  hasHeroMedia
+                    ? 'text-on-primary-muted'
+                    : 'text-[var(--text-secondary)]'
                 }`}
               >
                 {data.hero?.subtitle ||
@@ -126,7 +151,11 @@ export default async function PortfolioPage({
             </div>
             {heroImage && (
               <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-white/20">
-                <img src={heroImage} alt={data.hero?.title || 'Portfolio hero'} className="h-full w-full object-cover" />
+                <img
+                  src={heroImage}
+                  alt={data.hero?.title || 'Portfolio hero'}
+                  className="h-full w-full object-cover"
+                />
               </div>
             )}
           </div>
@@ -140,7 +169,11 @@ export default async function PortfolioPage({
             {categories.map((cat) => (
               <Link
                 key={cat}
-                href={cat === 'All' ? '/portfolio' : `/portfolio?category=${encodeURIComponent(cat)}`}
+                href={
+                  cat === 'All'
+                    ? '/portfolio'
+                    : `/portfolio?category=${encodeURIComponent(cat)}`
+                }
                 className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold transition-all ${
                   active === cat
                     ? 'bg-[var(--navy)] text-white'
@@ -159,7 +192,10 @@ export default async function PortfolioPage({
         <div className="container-content">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filtered.map((item) => (
-              <div key={item.id} className="group bg-white rounded-2xl border border-[var(--border)] overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1">
+              <div
+                key={item.id}
+                className="group bg-white rounded-2xl border border-[var(--border)] overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1"
+              >
                 <div className="relative h-52">
                   {resolveRenderableImage(item) ? (
                     <img
@@ -170,7 +206,9 @@ export default async function PortfolioPage({
                     />
                   ) : (
                     <div className="h-full bg-gradient-to-br from-[var(--navy)] to-[var(--charcoal)] flex items-center justify-center">
-                      <span className="text-6xl opacity-20">{categoryIcons[item.category]}</span>
+                      <span className="text-6xl opacity-20">
+                        {categoryIcons[item.category]}
+                      </span>
                     </div>
                   )}
                   {item.featured && (
@@ -180,14 +218,20 @@ export default async function PortfolioPage({
                   )}
                 </div>
                 <div className="p-6">
-                  <span className={`inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3 ${categoryColors[item.category] || 'tag-theme'}`}>
+                  <span
+                    className={`inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-3 ${categoryColors[item.category] || 'tag-theme'}`}
+                  >
                     {item.category}
                   </span>
                   <h3 className="font-serif font-semibold text-[var(--navy)] text-lg mb-1 group-hover:text-[var(--gold)] transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-[var(--text-secondary)] mb-3 font-medium">{item.client}</p>
-                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{item.desc}</p>
+                  <p className="text-xs text-[var(--text-secondary)] mb-3 font-medium">
+                    {item.client}
+                  </p>
+                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                    {item.desc}
+                  </p>
                 </div>
               </div>
             ))}
@@ -203,17 +247,22 @@ export default async function PortfolioPage({
       {/* Stats + CTA */}
       <section className="bg-[var(--navy)] py-16">
         <div className="container-content text-center">
-          <h2 className="font-serif text-white mb-4" style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2rem)' }}>
+          <h2
+            className="font-serif text-white mb-4"
+            style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2rem)' }}
+          >
             {data.cta?.title || "Let's create something great together."}
           </h2>
           <p className="text-on-primary-muted mb-8">
-            {data.cta?.subtitle || "Tell us about your project and we'll provide a custom quote."}
+            {data.cta?.subtitle ||
+              "Tell us about your project and we'll provide a custom quote."}
           </p>
           <Link
             href={data.cta?.buttonHref || '/quote'}
             className="inline-flex items-center gap-2 bg-gold-gradient text-white font-semibold px-8 py-4 rounded-xl hover:opacity-90 transition-opacity shadow-gold"
           >
-            {data.cta?.buttonText || 'Get a Quote'} <ArrowRight className="w-5 h-5" />
+            {data.cta?.buttonText || 'Get a Quote'}{' '}
+            <ArrowRight className="w-5 h-5" />
           </Link>
         </div>
       </section>
